@@ -9,6 +9,30 @@ body{
     background-color: orange;
 }
 
+
+li{
+  float: left;
+  list-style: none;
+  margin-top: 1vw;
+  margin-right: -3vw;
+  background: white;
+}
+
+nav{
+
+  float: right;
+  margin-top: 0vw;
+  margin-right: 3vw;
+}
+
+a.menu{
+  text-decoration: none;
+  font-family: 'rock';
+  color: black;
+  font-size: 1.5vw;
+  margin-right: 4vw
+}
+
 @font-face{
   font-family: 'rock';
   src: url(../Fuentes/QueenInlineGrunge.ttf);

@@ -15,19 +15,36 @@
 <body">
  {% block content %}  
  <body>  
-    <header>    
+	<header>
+            <nav>
+               <ul>
+                <li><a class="menu" href="{% url 'Inicio' %}">Inicio</a></li>
+                <li><a class="menu" href="{% url 'Naruto' %}">Personajes</a></li>
+                <li><a class="menu" href="{% url 'ListaPersonajes' %}">Galeria</a></li>
+                {% if user.is_authenticated %}
+                {% if perms.Naruto.delete_informaciones %}
+                <li><a class="menu" href="{% url 'admin:index' %}">Administrar</a></li>
+                {% endif %}                
+                <li><a class="menu" href="{% url 'User' %}">{{ user.username }}</a></li>
+                <li><a class="menu" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                {% else %}
+                <li><a class="menu" href="{% url 'register' %}">Registro</a></li>
+                <li><a class="menu" href="{% url 'login' %}">login</a></li>
+                {% endif %}
+              </ul>
+      </nav>     
       <img class="logo" src="{% static 'img/Name.png' %}" alt="name">
     </header>
 {% if form.errors %}
-<p>Usuario o Contraseña Incorrecta. Porfavor Intenta de Nuevo.</p>
+<p>Usuario o Contraseña Incorrecta. Por favor Intenta de Nuevo.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Ya Inciaste Sección.</p>
+    <p>Ya Iniciaste Sesión.</p>
     
     {% else %}
-    <p>Porfavor Inicia Sección c:</p>
+    <p>Porfavor Inicia Sesión c:</p>
     {% endif %}
 {% endif %}
 
